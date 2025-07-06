@@ -1,0 +1,17 @@
+ion-tab-bar {
+  --background: #ffffff;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08); /* drop shadow */
+}
+
+ion-tab-button {
+  flex-direction: column;
+  color: #2e7d32;             /* default icon/text color */
+  --color: #2e7d32;
+  --color-selected: #1b5e20;  /* selected (active tab) */
+  --ripple-color: #a5d6a7;
+}
+
+ion-tab-button.ion-focused,
+ion-tab-button.ion-selected {
+  color: #1b5e20 !important;
+}

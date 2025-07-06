@@ -1,0 +1,38 @@
+<p>
+  diagnosis works!
+</p>
+<ion-header translucent="true">
+  <ion-toolbar color="success">
+    <ion-title class="ion-text-center">🩺 Diagnose Crop</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card class="upload-card" color="light">
+    <ion-card-header>
+      <ion-card-title>Upload Crop Image</ion-card-title>
+      <ion-card-subtitle>Take a photo or select from gallery</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <input type="file" accept="image/*" (change)="onImageSelected($event)">
+      <div *ngIf="selectedImage" class="preview">
+        <img [src]="selectedImage" alt="Selected Crop" />
+      </div>
+      <ion-button expand="block" color="success" (click)="diagnoseImage()" [disabled]="!selectedImage">
+        🔍 Diagnose Now
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="diagnosisResult" color="success" class="result-card">
+    <ion-card-header>
+      <ion-card-title>Diagnosis Result</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Disease:</strong> {{ diagnosisResult.name }}</p>
+      <p><strong>Solution:</strong> {{ diagnosisResult.solution }}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
