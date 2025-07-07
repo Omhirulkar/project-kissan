@@ -1,0 +1,59 @@
+<ion-header translucent="true">
+  <ion-toolbar color="success">
+    <ion-title class="ion-text-center">📈 Market Rates</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- 🔍 Filter Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Filter Mandi Bhav</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-select label="Commodity" interface="popover" [(ngModel)]="selectedCommodity">
+              <ion-select-option *ngFor="let c of commodities" [value]="c">{{ c }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col>
+            <ion-select label="State" interface="popover" [(ngModel)]="selectedState">
+              <ion-select-option *ngFor="let s of states" [value]="s">{{ s }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-padding-top">
+          <ion-col size="12">
+            <ion-button expand="block" color="success" (click)="searchPrices()">Search</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- 📋 Market List -->
+  <ion-list *ngIf="marketRates.length > 0">
+    <ion-item *ngFor="let rate of marketRates">
+      <ion-label>
+        <h2>{{ rate.market }} - {{ rate.state }}</h2>
+        <p>🧾 {{ rate.commodity }} | {{ rate.variety }}</p>
+        <p>
+          Min: ₹{{ rate.min_price }},
+          Max: ₹{{ rate.max_price }},
+          Modal: ₹{{ rate.modal_price }}
+        </p>
+        <p class="ion-text-end"><i>{{ rate.arrival_date }}</i></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-text *ngIf="marketRates.length === 0" color="medium">
+    <p class="ion-text-center">No data found for selected filters.</p>
+  </ion-text>
+
+</ion-content>

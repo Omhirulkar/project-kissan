@@ -15,4 +15,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./diagnosis/diagnosis.component').then(m => m.DiagnosisComponent),
   },
+  {
+    path: 'market',
+    loadComponent: () =>
+      import('./market-prices/market-prices.component').then(m => m.MarketPricesComponent),
+  },
 ];
